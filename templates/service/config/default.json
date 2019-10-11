@@ -1,0 +1,19 @@
+{
+  "http": {
+    "port": 3000
+  },
+  "mongo": {
+    "username": "",
+    "password": "",
+    "dbname": "test",
+    "host": "127.0.0.1",
+    "port": 27017,
+    "slave": [],
+    "replicaSet": ""
+  },
+  "redis": {
+    "host": "127.0.0.1",
+    "port": 6379,
+    "db": 0
+  }
+}
