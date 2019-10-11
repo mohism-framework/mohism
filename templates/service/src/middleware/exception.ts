@@ -1,12 +1,14 @@
 /**
  * 兜底格式化未捕获的异常
  */
-import { Context } from 'koa';
+import { Context, Middleware } from 'koa';
 
-export default async (ctx: Context, next: any): Promise<any> => {
-  try {
-    return await next();
-  } catch (err) {
-    return ctx.error(err);
-  }
+export default (): Middleware => {
+  return async (ctx: Context, next: () => Promise<any>): Promise<any> => {
+    try {
+      return await next();
+    } catch (err) {
+      return ctx.error(err);
+    }
+  };
 };

@@ -16,7 +16,5 @@ healthRouter.get('/:service/swagger', async (ctx: any) => {
   return ctx.success('swagger.json not found');
 });
 
-export default (app: any): any => {
-  app.use(healthRouter.routes(), healthRouter.allowedMethods());
-  return app;
-};
+export default healthRouter;
+

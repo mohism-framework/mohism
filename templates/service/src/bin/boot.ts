@@ -4,14 +4,18 @@ import { get } from 'config';
 import Application from 'koa';
 import { EOL } from 'os';
 
-import app from '../app';
+import('../database/mongo.conn');
+import('../database/redis.conn');
+import MohismApplication from '../application/application';
+
+const app: MohismApplication = new MohismApplication();
 
 
 const mohismConf: MohismConf = require('../../mohism.json');
 
 const { port } = get('http');
 
-(app as Application).listen(port);
+app.start(port);
 
 if (process.env.NODE_ENV !== 'production') {
   console.log(`see: ${blue(`http://127.0.0.1:${port}/${mohismConf.name}/ping`)}`);
