@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"npx nodemon -e ts --watch src --exec \"npx ts-node src/bin/boot.ts\"",
+    "dev": "npx nodemon -e ts --watch src --exec \"npx ts-node src/bin/boot.ts\"",
     "build": "npx eslint ./src/*/** --fix &&npx tsc",
     "lint": "npx eslint ./src/*/** --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@koa/cors": "^2.2.3",
-    "@mohism/core": "^0.1.5",
+    "@mohism/core": "^0.1.16",
     "@types/config": "0.0.34",
     "@types/ioredis": "^4.0.18",
     "@types/kcors": "^2.2.3",

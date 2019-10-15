@@ -1,5 +1,6 @@
 import { Context, Middleware } from 'koa';
 import { MohismConf, UnifiedResponse } from '@mohism/core/dist/utils/globalType';
+import MohismErr from '@mohism/core/dist/utils/mohismError';
 
 const mohismConf: MohismConf = require('../../mohism.json');
 /**
@@ -18,8 +19,16 @@ export default (): Middleware => {
       ctx.body = body;
     };
 
-    ctx.error = (err: Error | UnifiedResponse | any, extra: any = {}) => {
-      if (err instanceof Error) {
+    ctx.error = (err: MohismErr | Error | UnifiedResponse | any, extra: any = {}) => {
+      let specStatus = 500;
+      if (err.status) {
+        specStatus = err.status;
+        err = {
+          code: err.status * 1e3,
+          message: `${err.name}:${err.message}`,
+          stack: err.stack,
+        };
+      } else if (err instanceof Error) {
         err = {
           code: 500000,
           message: `${err.name}:${err.message}`,
@@ -27,6 +36,7 @@ export default (): Middleware => {
         };
       }
       err.extra = extra;
+      ctx.status = specStatus;
       ctx.body = {
         code: appId * 1e6 + err.code,
         message: err.message,
