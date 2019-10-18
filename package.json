@@ -1,10 +1,11 @@
 {
   "name": "@mohism/mohism",
-  "version": "1.1.4",
+  "version": "1.1.7",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
+    "dev": "npx ts-node ./src/bin/index.ts",
     "lint": "npx eslint ./src/*/** --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "echo \"run 'sudo npm link' and '@mohism/mohism -h'\""
@@ -23,7 +24,8 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@mohism/cli-wrapper": "^1.1.4",
+    "@mohism/cli-wrapper": "^1.1.17",
+    "@mohism/self-upgrade": "^1.0.1",
     "@types/colors": "^1.2.1",
     "@types/inquirer": "^6.5.0",
     "@types/readline-sync": "^1.4.3",
@@ -34,7 +36,7 @@
     "shelljs": "^0.8.3"
   },
   "bin": {
-    "@mohism/mohism": "dist/bin/index.js"
+    "mohism": "dist/bin/index.js"
   },
   "mohismInit": true
 }
