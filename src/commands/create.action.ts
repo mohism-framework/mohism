@@ -5,7 +5,7 @@ import { Dict, ArgvOption } from '@mohism/cli-wrapper/dist/libs/utils/type';
 import { resolve } from 'path';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import * as inquirer from 'inquirer';
-import { cp, sed } from 'shelljs';
+import { cp } from 'shelljs';
 import { MohismConf } from '../types/index';
 
 class Create extends ActionBase {

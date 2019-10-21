@@ -1,6 +1,6 @@
-import ActionBase from "@mohism/cli-wrapper/dist/libs/action.class";
-import Command from "@mohism/cli-wrapper/dist/libs/command.class";
-import { Dict, ArgvOption } from "@mohism/cli-wrapper/dist/libs/utils/type";
+import ActionBase from '@mohism/cli-wrapper/dist/libs/action.class';
+import { ArgvOption, Dict } from '@mohism/cli-wrapper/dist/libs/utils/type';
+import { exec } from 'shelljs';
 
 class RunAction extends ActionBase {
 
@@ -8,7 +8,7 @@ class RunAction extends ActionBase {
     return {
       e: {
         default: 'dev',
-        desc: 'environment',
+        desc: 'spec environment',
       }
     };
   }
@@ -17,8 +17,26 @@ class RunAction extends ActionBase {
     return `extensions of 'npm run' `;
   }
 
-  async run(options:Dict<any>):Promise<any>{
-    this.info(options);
+  async run(options: Dict<any>): Promise<any> {
+    const { e: env } = options;
+    if (!['dev', 'test', 'prod'].includes(env)) {
+      this.err('only supported -e in ["dev", "test", "prod"]');
+    }
+    let cmd = '';
+    switch (env) {
+      case 'dev':
+        cmd = `NODE_ENV=development npx nodemon -e ts --watch src --exec \"npx ts-node src/bin/boot.ts\"`;
+        break;
+      case 'test':
+        break;
+      case 'prod':
+        break;
+    }
+    this.info(cmd);
+    exec(cmd, {
+      silent: false,
+      async: true,
+    });
   }
 }
 
