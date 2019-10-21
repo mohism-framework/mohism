@@ -5,7 +5,7 @@ import { Dict, ArgvOption } from '@mohism/cli-wrapper/dist/libs/utils/type';
 import { resolve } from 'path';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import * as inquirer from 'inquirer';
-import { cp } from 'shelljs';
+import { cp, sed } from 'shelljs';
 import { MohismConf } from '../types/index';
 
 class Create extends ActionBase {
@@ -18,7 +18,7 @@ class Create extends ActionBase {
 
   async run(): Promise<any> {
     const projectRoot = process.cwd();
-    const tplRoot = resolve(`${__dirname}/../templates`);
+    const tplRoot = resolve(`${__dirname}/../../templates`);
     if (!existsSync(`${projectRoot}/mohism.json`)) {
       this.warn('Plz run \'mohism init\' first!');
       process.exit(0);
@@ -46,13 +46,18 @@ class Create extends ActionBase {
     writeFileSync(`${projectRoot}/${mohism.name}/mohism.json`, JSON.stringify(mohism, null, 2));
     cp('-R', `${tplRoot}/${mohism.type}/*`, `${projectRoot}/${mohism.name}`);
     cp('-R', `${tplRoot}/${mohism.type}/.*`, `${projectRoot}/${mohism.name}`);
+
+    const newpkg = require(`${projectRoot}/${mohism.name}/package.json`);
+    newpkg.name = mohism.name;
+    writeFileSync(`${projectRoot}/${mohism.name}/package.json`, JSON.stringify(newpkg, null, 2));
+
     mohismConf.children.push({
       appId: latestId,
       name: mohism.name,
     });
 
     writeFileSync(`${projectRoot}/mohism.json`, JSON.stringify(mohismConf, null, 2));
-    this.info(`Done! Create ${mohism.type} in ${projectRoot}/${mohism.name}/mohism.json`);
+    this.info(`Done! Create ${mohism.type} in ${projectRoot}/${mohism.name}/mohism.json`.blue);
 
     process.exit(0);
   }
