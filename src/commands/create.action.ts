@@ -1,19 +1,20 @@
-
-import * as _ from 'colors';
 import ActionBase from '@mohism/cli-wrapper/dist/libs/action.class';
-import { Dict, ArgvOption } from '@mohism/cli-wrapper/dist/libs/utils/type';
-import { resolve } from 'path';
+import { ArgvOption, Dict } from '@mohism/cli-wrapper/dist/libs/utils/type';
+import { yellow } from 'colors';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import * as inquirer from 'inquirer';
+import { resolve } from 'path';
 import { cp } from 'shelljs';
-import { MohismConf } from '../types/index';
+
+import { MohismConf } from '../types';
+
 
 class Create extends ActionBase {
   options(): Dict<ArgvOption> {
     return {};
   }
   description(): string {
-    return `Create a new [${'service'.yellow}/${'website'.cyan}/${'cronjob'.green}/${'daemon'.blue}]`;
+    return `Create a new [${yellow('service')}/${'website'.cyan}/${'cronjob'.green}/${'daemon'.blue}]`;
   }
 
   async run(): Promise<any> {
