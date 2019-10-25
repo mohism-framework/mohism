@@ -19,7 +19,7 @@ class Init extends ActionBase {
     return '初始化 Mohism 工程架构';
   }
 
-  async run(options: Dict<any>): Promise<any> {
+  async run(): Promise<any> {
     const projectRoot = process.cwd();
     const tplRoot = resolve(`${__dirname}/../templates`);
     if (existsSync(`${projectRoot}/mohism.json`)) {
