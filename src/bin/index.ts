@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import Command from '@mohism/cli-wrapper/dist/libs/command.class';
 import Upgrade from '@mohism/self-upgrade';
+import TsKit from '@mohism/ts-kit';
 import { resolve } from 'path';
 
 import Create from '../commands/create.action';
@@ -22,6 +23,7 @@ const instance = new Command({
 instance.add('init', Init);
 instance.add('create', Create);
 instance.add('run', Run);
+instance.add('ts-kit', TsKit);
 instance.add('upgrade', Upgrade);
 
 
