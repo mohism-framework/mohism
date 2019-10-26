@@ -2,6 +2,8 @@
 import Command from '@mohism/cli-wrapper/dist/libs/command.class';
 import Upgrade from '@mohism/self-upgrade';
 import TsKit from '@mohism/ts-kit';
+import Publish from '@mohism/publish';
+
 import { resolve } from 'path';
 
 import Create from '../commands/create.action';
@@ -24,6 +26,7 @@ instance.add('init', Init);
 instance.add('create', Create);
 instance.add('run', Run);
 instance.add('ts-kit', TsKit);
+instance.add('pu', Publish);
 instance.add('upgrade', Upgrade);
 
 

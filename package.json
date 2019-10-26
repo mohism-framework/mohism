@@ -1,6 +1,6 @@
 {
   "name": "@mohism/mohism",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -29,9 +29,10 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@mohism/cli-wrapper": "^1.1.25",
+    "@mohism/cli-wrapper": "^1.2.15",
+    "@mohism/publish": "^1.0.4",
     "@mohism/self-upgrade": "^1.0.1",
-    "@mohism/ts-kit": "^1.0.3",
+    "@mohism/ts-kit": "^1.0.7",
     "inquirer": "^7.0.0",
     "readline-sync": "^1.4.10",
     "shelljs": "^0.8.3"
