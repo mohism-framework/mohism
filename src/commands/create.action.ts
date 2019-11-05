@@ -1,5 +1,5 @@
 import ActionBase from '@mohism/cli-wrapper/dist/libs/action.class';
-import { ArgvOption, Dict } from '@mohism/cli-wrapper/dist/libs/utils/type';
+import { ArgvOption } from '@mohism/cli-wrapper/dist/libs/utils/type';
 import { yellow } from 'colors';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import * as inquirer from 'inquirer';
@@ -7,6 +7,7 @@ import { resolve } from 'path';
 import { cp } from 'shelljs';
 
 import { MohismConf } from '../types';
+import { Dict } from '@mohism/utils';
 
 
 class Create extends ActionBase {
