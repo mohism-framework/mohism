@@ -1,9 +1,9 @@
 import ActionBase from '@mohism/cli-wrapper/dist/libs/action.class';
 import { ArgvOption } from '@mohism/cli-wrapper/dist/libs/utils/type';
-import { exec } from 'shelljs';
-import { existsSync } from 'fs';
-import { yellow } from 'colors';
 import { Dict } from '@mohism/utils';
+import { yellow } from 'colors';
+import { existsSync } from 'fs';
+import { exec } from 'shelljs';
 
 class RunAction extends ActionBase {
 
