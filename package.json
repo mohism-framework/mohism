@@ -1,14 +1,15 @@
 {
   "name": "@mohism/mohism",
-  "version": "1.1.16",
+  "version": "1.1.17",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npx eslint src/**/*.ts --fix && npx tsc",
     "dev": "npx ts-node src/bin/index.ts",
     "lint": "npx eslint src/**/*.ts --fix",
-    "test": "npx mocha --require ts-node/register **/*.spec.ts",
-    "start": "echo \"run 'sudo npm link' and 'mohism -h'\""
+    "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
+    "start": "echo \"run 'sudo npm link' and 'mohism -h'\"",
+    "cover": "npx nyc npm test"
   },
   "keywords": [
     "mohism",
@@ -38,7 +39,7 @@
     "@mohism/cli-wrapper": "^1.2.23",
     "@mohism/publish": "^1.0.7",
     "@mohism/self-upgrade": "^1.0.4",
-    "@mohism/ts-kit": "^1.0.10",
+    "@mohism/ts-kit": "^1.0.11",
     "@mohism/utils": "^1.0.1",
     "inquirer": "^7.0.0",
     "readline-sync": "^1.4.10",

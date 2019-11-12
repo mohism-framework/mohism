@@ -2,7 +2,7 @@ import { HTTP_METHODS, HTTP_PARAM_LOCATION as LOCATION } from '@mohism/core/dist
 import { IDefinition } from '@mohism/core/dist/http/definitions/iDefinition';
 import Pick from '@mohism/core/dist/http/definitions/pick';
 import IHandler from '@mohism/core/dist/http/iHandler';
-import { Dict } from '@mohism/core/dist/utils/globalType';
+import { Dict } from '@mohism/utils/dist/libs/type';
 
 class HelloWorld implements IHandler {
   name(): string {

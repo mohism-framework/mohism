@@ -1,18 +1,17 @@
 import { MohismConf } from '@mohism/core/dist/utils/globalType';
 import { blue } from 'colors';
 import { get } from 'config';
-import Application from 'koa';
 import { EOL } from 'os';
+
+import MohismApplication from '@mohism/core/dist/http/mohism-application';
+import helloWorld from '../handlers/hello-world';
 
 import('../database/mongo.conn');
 import('../database/redis.conn');
-import MohismApplication from '../application/application';
-import helloWorld from '../handlers/hello-world';
 
 const app: MohismApplication = new MohismApplication();
 
 app.mount(helloWorld);
-
 const mohismConf: MohismConf = require('../../mohism.json');
 
 const { port } = get('http');
