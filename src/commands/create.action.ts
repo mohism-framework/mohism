@@ -7,7 +7,7 @@ import * as inquirer from 'inquirer';
 import { resolve } from 'path';
 import { cp } from 'shelljs';
 
-import { MohismConf } from '../types';
+import { MohismConf, AppMeta } from '@mohism/core/dist/utils/global-type';
 
 
 class Create extends ActionBase {
@@ -26,7 +26,7 @@ class Create extends ActionBase {
       process.exit(0);
     }
     const mohismConf: MohismConf = require(`${projectRoot}/mohism.json`);
-    const children = mohismConf.children;
+    const children = mohismConf.children as Array<AppMeta>;
     const latestId = children.length ? children[children.length - 1].appId + 1 : 1000;
 
     const answer = await inquirer.prompt([
@@ -53,7 +53,7 @@ class Create extends ActionBase {
     newpkg.name = mohism.name;
     writeFileSync(`${projectRoot}/${mohism.name}/package.json`, JSON.stringify(newpkg, null, 2));
 
-    mohismConf.children.push({
+    (mohismConf.children as Array<AppMeta>).push({
       appId: latestId,
       name: mohism.name,
     });

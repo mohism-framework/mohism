@@ -27,13 +27,33 @@ class RunAction extends ActionBase {
       this.fatal(`Run "${yellow('npm install')}" first`);
     }
     const pkg = require(`${process.cwd()}/package.json`);
-    const cmd = pkg.scripts[sub] || `echo "missing script: ${sub}"`;
+    const cmd = pkg.scripts[sub];
+    if (!cmd) {
+      this.fatal(`echo "missing script: ${sub}"`);
+    }
+    if (pkg.scripts[`pre${sub}`]) {
+      this.info(pkg.scripts[`pre${sub}`]);
+      exec(pkg.scripts[`pre${sub}`], {
+        silent: false,
+        async: true,
+      });
+      this.storage.append('run_log', pkg.scripts[`pre${sub}`]);
+    }
     this.info(cmd);
     exec(cmd, {
       silent: false,
       async: true,
     });
     this.storage.append('run_log', cmd);
+    if (pkg.scripts[`post${sub}`]) {
+      this.info(pkg.scripts[`post${sub}`]);
+      exec(pkg.scripts[`post${sub}`], {
+        silent: false,
+        async: true,
+      });
+      this.storage.append('run_log', pkg.scripts[`post${sub}`]);
+    }
+    
   }
 }
 

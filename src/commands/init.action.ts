@@ -7,7 +7,7 @@ import { resolve } from 'path';
 import { keyInYN, question } from 'readline-sync';
 import { cp, exec, which } from 'shelljs';
 
-import { MohismConf } from '../types';
+import { MohismConf } from '@mohism/core/dist/utils/global-type';
 
 
 class Init extends ActionBase {

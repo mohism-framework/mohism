@@ -1,10 +1,12 @@
 {
   "name": "@mohism/mohism",
-  "version": "1.1.17",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npx cli-complete",
     "build": "npx eslint src/**/*.ts --fix && npx tsc",
+    "postbuild": "npx cli-complete",
     "dev": "npx ts-node src/bin/index.ts",
     "lint": "npx eslint src/**/*.ts --fix",
     "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
@@ -36,10 +38,11 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@mohism/cli-wrapper": "^1.2.23",
+    "@mohism/cli-wrapper": "^1.3.5",
+    "@mohism/core": "^0.2.6",
     "@mohism/publish": "^1.0.7",
     "@mohism/self-upgrade": "^1.0.4",
-    "@mohism/ts-kit": "^1.0.11",
+    "@mohism/ts-kit": "^1.0.12",
     "@mohism/utils": "^1.0.1",
     "inquirer": "^7.0.0",
     "readline-sync": "^1.4.10",
@@ -48,5 +51,5 @@
   "bin": {
     "mohism": "dist/bin/index.js"
   },
-  "mohismInit": true
+  "mohismCmd": "mohism"
 }
