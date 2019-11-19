@@ -1,12 +1,12 @@
 {
   "name": "@mohism/mohism",
-  "version": "1.2.0",
+  "version": "1.2.4",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npx cli-complete",
+    "postinstall": "echo \"\n\" && echo \" Run 'mohism --complete' enable completion. \"  && echo \"\n\"",
     "build": "npx eslint src/**/*.ts --fix && npx tsc",
-    "postbuild": "npx cli-complete",
+    "postbuild": "mohism --complete",
     "dev": "npx ts-node src/bin/index.ts",
     "lint": "npx eslint src/**/*.ts --fix",
     "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
@@ -38,7 +38,7 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@mohism/cli-wrapper": "^1.3.5",
+    "@mohism/cli-wrapper": "^1.3.6",
     "@mohism/core": "^0.2.6",
     "@mohism/publish": "^1.0.7",
     "@mohism/self-upgrade": "^1.0.4",

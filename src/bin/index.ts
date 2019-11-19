@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import Command from '../../../cli-wrapper/dist/libs/command.class';
-// import Command from '@mohism/cli-wrapper/dist/libs/command.class';
+import Command from '@mohism/cli-wrapper/dist/libs/command.class';
 import Publish from '@mohism/publish';
 import Upgrade from '@mohism/self-upgrade';
 import TsKit from '@mohism/ts-kit';

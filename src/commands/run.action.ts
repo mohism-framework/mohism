@@ -52,8 +52,7 @@ class RunAction extends ActionBase {
         async: true,
       });
       this.storage.append('run_log', pkg.scripts[`post${sub}`]);
-    }
-    
+    }  
   }
 }
 
