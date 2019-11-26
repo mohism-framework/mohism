@@ -6,7 +6,6 @@
   "scripts": {
     "postinstall": "echo \"\n\" && echo \" Run 'mohism --complete' enable completion. \"  && echo \"\n\"",
     "build": "npx eslint src/**/*.ts --fix && npx tsc",
-    "postbuild": "mohism --complete",
     "dev": "npx ts-node src/bin/index.ts",
     "lint": "npx eslint src/**/*.ts --fix",
     "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
@@ -32,6 +31,7 @@
     "chai": "^4.2.0",
     "eslint": "^6.5.1",
     "husky": "^3.1.0",
+    "lint-staged": "^9.4.3",
     "mocha": "^6.2.2",
     "nodemon": "^1.19.4",
     "nyc": "^14.1.1",

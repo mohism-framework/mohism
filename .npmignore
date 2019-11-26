@@ -2,3 +2,5 @@ src
 node_modules
 tsconfig.json
 *.map
+.nyc_output
+coverage
