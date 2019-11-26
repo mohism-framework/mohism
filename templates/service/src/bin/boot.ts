@@ -1,4 +1,4 @@
-import { MohismConf } from '@mohism/core/dist/utils/globalType';
+import { MohismConf } from '@mohism/core';
 import { blue } from 'colors';
 import { get } from 'config';
 import { EOL } from 'os';
@@ -12,16 +12,17 @@ import('../database/redis.conn');
 const app: MohismApplication = new MohismApplication();
 
 app.mount(helloWorld);
+
 const mohismConf: MohismConf = require('../../mohism.json');
 
-const { port } = get('http');
+const { port, host } = get('http');
 
 app.start(port);
 
 app.verbose();
 
 if (process.env.NODE_ENV !== 'production') {
-  console.log(`${EOL}see: ${blue(`http://127.0.0.1:${port}/${mohismConf.name}/ping`)}`);
+  console.log(`${EOL}see: ${blue(`http://${host}:${port}/${mohismConf.name}/ping`)}`);
 }
 
 console.log(`${EOL}starting at port ${port}`);

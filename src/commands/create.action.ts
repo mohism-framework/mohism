@@ -7,7 +7,7 @@ import * as inquirer from 'inquirer';
 import { resolve } from 'path';
 import { cp } from 'shelljs';
 
-import { MohismConf, AppMeta } from '@mohism/core/dist/utils/global-type';
+import { MohismConf, AppMeta } from '@mohism/core';
 
 
 class Create extends ActionBase {
