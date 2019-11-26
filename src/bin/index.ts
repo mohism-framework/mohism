@@ -8,6 +8,7 @@ import { resolve } from 'path';
 import Create from '../commands/create.action';
 import Init from '../commands/init.action';
 import Run from '../commands/run.action';
+import Prune from '@mohism/prune-node-modules';
 
 require('colors');
 
@@ -27,6 +28,7 @@ instance.add('run', Run);
 instance.add('ts-kit', TsKit);
 instance.add('pu', Publish);
 instance.add('upgrade', Upgrade);
+instance.add('prune', Prune);
 
 
 // run

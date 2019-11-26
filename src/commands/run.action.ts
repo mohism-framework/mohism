@@ -17,6 +17,8 @@ class RunAction extends ActionBase {
 
   async run(): Promise<any> {
     const [, sub] = this.instance.yargs.argv._;
+    const otherOptions: string = (process.argv.slice(4)).join(' ');
+    
     if (!sub) {
       this.fatal('usage: mohism run [cmd] , see scripts in package.json ');
     }
@@ -27,7 +29,7 @@ class RunAction extends ActionBase {
       this.fatal(`Run "${yellow('npm install')}" first`);
     }
     const pkg = require(`${process.cwd()}/package.json`);
-    const cmd = pkg.scripts[sub];
+    const cmd = `${pkg.scripts[sub]} ${otherOptions}`;
     if (!cmd) {
       this.fatal(`echo "missing script: ${sub}"`);
     }
@@ -52,7 +54,7 @@ class RunAction extends ActionBase {
         async: true,
       });
       this.storage.append('run_log', pkg.scripts[`post${sub}`]);
-    }  
+    }
   }
 }
 
