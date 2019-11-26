@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "echo \"\n\" && echo \" Run 'mohism --complete' enable completion. \"  && echo \"\n\"",
-    "build": "npx eslint src/**/*.ts --fix && npx tsc",
+    "build": "npx tsc",
     "dev": "npx ts-node src/bin/index.ts",
-    "lint": "npx eslint src/**/*.ts --fix",
+    "lint": "npx eslint src/**/*.ts --cache --fix",
     "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
     "start": "echo \"run 'sudo npm link' and 'mohism -h'\"",
     "cover": "npx nyc npm test"
@@ -42,7 +42,7 @@
     "@mohism/prune-node-modules": "^1.0.1",
     "@mohism/publish": "^1.0.7",
     "@mohism/self-upgrade": "^1.0.4",
-    "@mohism/ts-kit": "^1.0.13",
+    "@mohism/ts-kit": "^1.1.0",
     "@mohism/utils": "^1.0.1",
     "inquirer": "^7.0.0",
     "readline-sync": "^1.4.10",
