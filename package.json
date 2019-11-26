@@ -1,6 +1,6 @@
 {
   "name": "@mohism/mohism",
-  "version": "1.2.8",
+  "version": "1.2.11",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -40,9 +40,9 @@
     "@mohism/cli-wrapper": "^1.3.13",
     "@mohism/core": "^0.2.6",
     "@mohism/prune-node-modules": "^1.0.1",
-    "@mohism/publish": "^1.0.7",
+    "@mohism/publish": "^1.0.10",
     "@mohism/self-upgrade": "^1.0.4",
-    "@mohism/ts-kit": "^1.1.1",
+    "@mohism/ts-kit": "^1.1.2",
     "@mohism/utils": "^1.0.1",
     "inquirer": "^7.0.0",
     "readline-sync": "^1.4.10",
