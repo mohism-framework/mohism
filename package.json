@@ -37,11 +37,11 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@mohism/cli-wrapper": "^1.3.13",
-    "@mohism/core": "^0.2.6",
+    "@mohism/core": "^0.4.2",
     "@mohism/prune-node-modules": "^1.0.1",
     "@mohism/publish": "^1.0.10",
     "@mohism/self-upgrade": "^1.0.4",
+    "@mohism/sloty": "^1.0.1",
     "@mohism/ts-kit": "^1.1.2",
     "@mohism/utils": "^1.0.1",
     "inquirer": "^7.0.0",
