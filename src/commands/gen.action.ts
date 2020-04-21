@@ -1,9 +1,7 @@
 import { ActionBase, ArgvOption } from '@mohism/sloty';
 import { Dict, toAbcDef } from '@mohism/utils';
-import { existsSync, readFileSync, appendFileSync, writeFileSync } from 'fs';
+import { appendFileSync, existsSync, readFileSync, writeFileSync } from 'fs';
 import { EOL } from 'os';
-import { touch } from 'shelljs';
-
 
 class GenAction extends ActionBase {
   options(): Dict<ArgvOption> {
@@ -11,20 +9,21 @@ class GenAction extends ActionBase {
   }
 
   description(): string {
-    return `generate things `;
+    return 'generate things ';
   }
 
   async run(): Promise<any> {
     // start here
     if (!existsSync(`${process.cwd()}/mohism.json`)) {
-      this.fatal('可视范围内没有找到 mohism.json, 在下无能为力.')
+      this.fatal('可视范围内没有找到 mohism.json, 在下无能为力.');
     }
 
     console.log('欢迎使用代码助手');
     const options = ['error', 'handler', 'faas', 'middleware', 'models'];
     const type = await this.question.select('选择类型:', options);
     switch (options[type]) {
-      case 'error':
+    case 'error':
+      {
         const msg = await this.question.input('错误提示语:');
         const status = await this.question.input('所属状态簇:(如 404)');
         if (!existsSync(`${process.cwd()}/src/errors/${status}.ts`)) {
@@ -36,9 +35,10 @@ class GenAction extends ActionBase {
         appendFileSync(`${process.cwd()}/src/errors/${status}.ts`, content);
         this.done(`Generated Error: ${msg}(${status})`);
 
-        break;
-      default:
-        this.fatal('还没来得及实现');
+      }
+      break;
+    default:
+      this.fatal('还没来得及实现');
     }
   }
 }
