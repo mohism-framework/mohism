@@ -9,6 +9,7 @@ import { resolve } from 'path';
 import Create from '../commands/create.action';
 import Init from '../commands/init.action';
 import Run from '../commands/run.action';
+import Gen from '../commands/gen.action';
 
 
 require('colors');
@@ -30,6 +31,7 @@ instance.add('ts-kit', TsKit);
 instance.add('pu', Publish);
 instance.add('upgrade', Upgrade);
 instance.add('prune', Prune);
+instance.add('gen', Gen);
 
 // run
 instance.run();
