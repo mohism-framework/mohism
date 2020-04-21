@@ -1,12 +1,13 @@
 {
-  "name": "service",
+  "name": "api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon -e ts --watch src --exec \"npx ts-node src/bin/boot.ts\"",
-    "build": "npx eslint src/**/*.ts --fix && npx tsc",
-    "lint": "npx eslint src/**/*.ts --fix",
+    "dev": "npx nodemon -e ts --watch src -x \"npx ts-node src/boot.ts\"",
+    "build": "npx tsc",
+    "start": "node dist/boot.js",
+    "lint": "npx eslint src/**/*.ts --cache --fix",
     "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
     "cover": "npx nyc npm test"
   },
@@ -16,35 +17,32 @@
     "@types/chai": "^4.2.4",
     "@types/config": "0.0.34",
     "@types/ioredis": "^4.0.18",
-    "@types/kcors": "^2.2.3",
-    "@types/koa": "^2.0.50",
-    "@types/koa-bodyparser": "^4.3.0",
-    "@types/koa-router": "^7.0.42",
-    "@types/koa2-cors": "^2.0.1",
     "@types/mocha": "^5.2.7",
-    "@types/mongoose": "^5.5.20",
+    "@types/mongoose": "^5.7.11",
     "@types/node": "^12.7.12",
     "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.4.0",
     "chai": "^4.2.0",
     "eslint": "^6.5.1",
+    "husky": "^3.1.0",
     "mocha": "^6.2.2",
     "nodemon": "^1.19.3",
     "nyc": "^14.1.1",
+    "prettier": "^2.0.4",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@koa/cors": "^2.2.3",
-    "@mohism/core": "^0.2.4",
+    "@mohism/core": "^0.4.2",
     "@mohism/utils": "^1.0.1",
     "config": "^3.2.3",
     "ioredis": "^4.14.1",
-    "kcors": "^2.2.2",
-    "koa": "^2.8.2",
-    "koa-bodyparser": "^4.2.1",
-    "koa-router": "^7.4.0",
-    "koa2-cors": "^2.0.6",
+    "module-alias": "^2.2.2",
     "mongoose": "^5.7.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint & npm test"
+    }
   }
 }
