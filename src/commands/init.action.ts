@@ -19,7 +19,7 @@ class Init extends ActionBase {
 
   async run(): Promise<any> {
     const projectRoot = process.cwd();
-    const tplRoot = resolve(`${__dirname}/../templates`);
+    const tplRoot = resolve(`${__dirname}/../../templates`);
     if (existsSync(`${projectRoot}/mohism.json`)) {
       this.warn(`Already Init: ${projectRoot}`);
       process.exit(0);

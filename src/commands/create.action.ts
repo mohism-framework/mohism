@@ -5,7 +5,7 @@ import { yellow } from 'colors';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import * as inquirer from 'inquirer';
 import { resolve } from 'path';
-import { cp } from 'shelljs';
+import { cp, ln } from 'shelljs';
 
 class Create extends ActionBase {
   options(): Dict<ArgvOption> {
@@ -35,7 +35,7 @@ class Create extends ActionBase {
       {
         type: 'list',
         name: 'type',
-        choices: ['service', 'website', 'cronjob', 'daemon'],
+        choices: ['api', 'website', 'cronjob', 'daemon'],
         message: 'what do you want?',
         default: 'service'
       }
@@ -49,6 +49,10 @@ class Create extends ActionBase {
     const newpkg = require(`${projectRoot}/${mohism.name}/package.json`);
     newpkg.name = mohism.name;
     writeFileSync(`${projectRoot}/${mohism.name}/package.json`, JSON.stringify(newpkg, null, 2));
+
+    ln('-s', `${projectRoot}/common/models`, `${projectRoot}/${mohism.name}/src/models`);
+    ln('-s', `${projectRoot}/common/constant`, `${projectRoot}/${mohism.name}/src/constant`);
+    ln('-s', `${projectRoot}/common/types`, `${projectRoot}/${mohism.name}/src/types`);
 
     (mohismConf.children as Array<AppMeta>).push({
       appId: latestId,
