@@ -1,7 +1,8 @@
-import { describe, it } from "mocha";
 import { HttpApplication, HttpTestKit } from '@mohism/core';
+import { assert, expect } from 'chai';
+import { describe, it } from 'mocha';
+
 import Hello from '../src/handlers/hello-world';
-import { assert, expect } from "chai";
 
 describe('hello-world', () => {
   it('base', () => {

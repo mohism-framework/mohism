@@ -1,8 +1,3 @@
-const moduleAlias = require('module-alias');
-moduleAlias.addAliases({
-  "@": __dirname,
-});
-
 import { HttpApplication, HttpConf } from '@mohism/core';
 import { get } from 'config';
 
