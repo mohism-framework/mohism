@@ -35,7 +35,7 @@ class Create extends ActionBase {
       {
         type: 'list',
         name: 'type',
-        choices: ['service', 'website', 'cronjob', 'daemon'],
+        choices: ['api', 'website', 'cronjob', 'daemon'],
         message: 'what do you want?',
         default: 'service'
       }

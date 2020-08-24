@@ -3,9 +3,8 @@ import { ActionBase, ArgvOption } from '@mohism/sloty';
 import { Dict } from '@mohism/utils';
 import { yellow } from 'colors';
 import { existsSync, writeFileSync } from 'fs';
-import { resolve } from 'path';
 import { keyInYN, question } from 'readline-sync';
-import { cp, exec, which } from 'shelljs';
+import { exec, which } from 'shelljs';
 
 class Init extends ActionBase {
 
@@ -19,7 +18,6 @@ class Init extends ActionBase {
 
   async run(): Promise<any> {
     const projectRoot = process.cwd();
-    const tplRoot = resolve(`${__dirname}/../templates`);
     if (existsSync(`${projectRoot}/mohism.json`)) {
       this.warn(`Already Init: ${projectRoot}`);
       process.exit(0);
@@ -36,7 +34,7 @@ class Init extends ActionBase {
     if (keyInYN('Continue?'.yellow)) {
       writeFileSync(`${projectRoot}/mohism.json`, JSON.stringify(mohism, null, 2));
       writeFileSync(`${projectRoot}/.gitignore`, '');
-      cp('-R', `${tplRoot}/common`, '.');
+      
       if (which('git')) {
         exec('git init', {
           silent: true,
