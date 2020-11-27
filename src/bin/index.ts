@@ -1,16 +1,9 @@
 #!/usr/bin/env node
-import Prune from '@mohism/prune-node-modules';
-import Publish from '@mohism/publish';
-import Upgrade from '@mohism/self-upgrade';
-import Command from '@mohism/sloty/dist/libs/command.class';
-import TsKit from '@mohism/ts-kit';
+
 import { resolve } from 'path';
+import { Command } from '@mohism/sloty';
 
-import Create from '../commands/create.action';
-import Init from '../commands/init.action';
-import Run from '../commands/run.action';
-import Gen from '../commands/gen.action';
-
+import Plugin from '../commands/plugin.action';
 
 require('colors');
 
@@ -24,14 +17,7 @@ const instance = new Command({
 });
 
 // register
-instance.add('init', Init);
-instance.add('create', Create);
-instance.add('run', Run);
-instance.add('ts-kit', TsKit);
-instance.add('pu', Publish);
-instance.add('upgrade', Upgrade);
-instance.add('prune', Prune);
-instance.add('gen', Gen);
+instance.add('plugin', Plugin);
 
 // run
 instance.run();

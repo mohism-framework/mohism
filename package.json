@@ -1,16 +1,13 @@
 {
   "name": "@mohism/mohism",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "postinstall": "echo \"\n\" && echo \" Run 'mohism --complete' enable completion. \"  && echo \"\n\"",
     "build": "npx tsc",
-    "dev": "npx ts-node src/bin/index.ts",
     "lint": "npx eslint src/**/*.ts --cache --fix",
-    "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
-    "start": "echo \"run 'sudo npm link' and 'mohism -h'\"",
-    "cover": "npx nyc npm test"
+    "start": "echo \"run 'sudo npm link' and 'mohism -h'\""
   },
   "keywords": [
     "mohism",
@@ -42,7 +39,7 @@
     "@mohism/prune-node-modules": "^1.0.2",
     "@mohism/publish": "^1.0.12",
     "@mohism/self-upgrade": "^1.0.4",
-    "@mohism/sloty": "^1.0.3",
+    "@mohism/sloty": "^1.3.5",
     "@mohism/ts-kit": "^1.1.4",
     "@mohism/utils": "^1.1.3",
     "inquirer": "^7.0.0",
