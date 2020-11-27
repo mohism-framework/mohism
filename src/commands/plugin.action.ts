@@ -19,35 +19,35 @@ class PluginAction extends ActionBase {
   async run(options: IWithSubCommands) {
     const { subCommands, verbose } = options;
     switch (subCommands[1]) {
-      case 'ls':
-        this.printPlugins();
-        break;
-      case 'add':
-        process.chdir(this.instance.pluginRoot);
-        const repo =
+    case 'ls':
+      this.printPlugins();
+      break;
+    case 'add':
+      process.chdir(this.instance.pluginRoot);
+      const repo =
           subCommands[2] || (await this.question.input('输入插件名字: '));
-        this.info('⏳ 耐心等待...');
-        this.exec(
-          `npm install --save ${repo}`,
-          {
-            silent: !verbose,
-          },
-        );
-        console.log(`Run: ${this.instance.name} --complete  更新命令补全`);
-        break;
-      case 'remove':
-        process.chdir(this.instance.pluginRoot);
-        const toRemoved = await this.question.select(
-          '选择移除插件',
-          this.instance.plugins,
-        );
-        this.exec(`npm uninstall ${toRemoved}`, { silent: !verbose });
-        console.log(`Run: ${this.instance.name} --complete  更新命令补全`);
-        break;
-      default:
-        this.warn(`Invalid Operation: ${subCommands[1]}`);
-        this.warn(this.description());
-        break;
+      this.info('⏳ 耐心等待...');
+      this.exec(
+        `npm install --save ${repo}`,
+        {
+          silent: !verbose,
+        },
+      );
+      console.log(`Run: ${this.instance.name} --complete  更新命令补全`);
+      break;
+    case 'remove':
+      process.chdir(this.instance.pluginRoot);
+      const toRemoved = await this.question.select(
+        '选择移除插件',
+        this.instance.plugins,
+      );
+      this.exec(`npm uninstall ${toRemoved}`, { silent: !verbose });
+      console.log(`Run: ${this.instance.name} --complete  更新命令补全`);
+      break;
+    default:
+      this.warn(`Invalid Operation: ${subCommands[1]}`);
+      this.warn(this.description());
+      break;
     }
   }
 
